@@ -24,31 +24,31 @@ class Database extends Config
      *
      * @var array<string, mixed>
      */
-    public array $default = [
-        'DSN'          => '',
-        'hostname'     => # Change it to the hostname of the DB,
-        'username'     => 'admin',
-        'password'     => 'Padmin',
-        'database'     => 'ci4_url_shortener',
-        'DBDriver'     => 'sqlsrv', // odbc driver is not built-in by default in CI4 like in CI3 and sqlsrv is more reliable
-        'DBPrefix'     => '',
-        'pConnect'     => false,
-        'DBDebug'      => true,
-        'charset'      => 'utf8mb4',
-        'DBCollat'     => 'utf8mb4_general_ci',
-        'swapPre'      => '',
-        'encrypt'      => false,
-        'compress'     => false,
-        'strictOn'     => false,
-        'failover'     => [],
-        // 'port'         => 3306, //MS SQL Server usually operates at 1433 so replacing the port 3306 with port 1433
-        'numberNative' => false,
-        'dateFormat'   => [
-            'date'     => 'Y-m-d',
-            'datetime' => 'Y-m-d H:i:s',
-            'time'     => 'H:i:s',
-        ],
-    ];
+    // public array $default = [
+    //     'DSN'          => '',
+    //     'hostname'     => '$hostname',
+    //     'username'     => 'admin',
+    //     'password'     => 'Padmin',
+    //     'database'     => 'ci4_url_shortener',
+    //     'DBDriver'     => 'sqlsrv', // odbc driver is not built-in by default in CI4 like in CI3 and sqlsrv is more reliable
+    //     'DBPrefix'     => '',
+    //     'pConnect'     => false,
+    //     'DBDebug'      => true,
+    //     'charset'      => 'utf8mb4',
+    //     'DBCollat'     => 'utf8mb4_general_ci',
+    //     'swapPre'      => '',
+    //     'encrypt'      => false,
+    //     'compress'     => false,
+    //     'strictOn'     => false,
+    //     'failover'     => [],
+    //     // 'port'         => 3306, //MS SQL Server usually operates at 1433 so replacing the port 3306 with port 1433
+    //     'numberNative' => false,
+    //     'dateFormat'   => [
+    //         'date'     => 'Y-m-d',
+    //         'datetime' => 'Y-m-d H:i:s',
+    //         'time'     => 'H:i:s',
+    //     ],
+    // ];
 
     //    /**
     //     * Sample database connection for SQLite3.
@@ -189,6 +189,38 @@ class Database extends Config
 
     public function __construct()
     {
+        $hostname = env('database.default.hostname');
+        $username = env('database.default.username');
+        $password = env('database.default.password');
+        $database = env('database.default.database');
+        $DBDriver = env('database.default.DBDriver');
+
+        $this->default = [
+            'DSN'          => '',
+            'hostname'     => $hostname,
+            'username'     => $username,
+            'password'     => $password,
+            'database'     => $database,
+            'DBDriver'     => $DBDriver, // odbc driver is not built-in by default in CI4 like in CI3 and sqlsrv is more reliable
+            'DBPrefix'     => '',
+            'pConnect'     => false,
+            'DBDebug'      => true,
+            'charset'      => 'utf8mb4',
+            'DBCollat'     => 'utf8mb4_general_ci',
+            'swapPre'      => '',
+            'encrypt'      => false,
+            'compress'     => false,
+            'strictOn'     => false,
+            'failover'     => [],
+            // 'port'         => 3306, //MS SQL Server usually operates at 1433 so replacing the port 3306 with port 1433
+            'numberNative' => false,
+            'dateFormat'   => [
+                'date'     => 'Y-m-d',
+                'datetime' => 'Y-m-d H:i:s',
+                'time'     => 'H:i:s',
+            ],
+        ];
+
         parent::__construct();
 
         // Ensure that we always set the database group to 'tests' if

@@ -26,11 +26,11 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => '',
-        'password'     => '',
-        'database'     => '',
-        'DBDriver'     => 'MySQLi',
+        'hostname'     => # Change it to the hostname of the DB,
+        'username'     => 'admin',
+        'password'     => 'Padmin',
+        'database'     => 'ci4_url_shortener',
+        'DBDriver'     => 'sqlsrv', // odbc driver is not built-in by default in CI4 like in CI3 and sqlsrv is more reliable
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => 3306,
+        // 'port'         => 3306, //MS SQL Server usually operates at 1433 so replacing the port 3306 with port 1433
         'numberNative' => false,
         'dateFormat'   => [
             'date'     => 'Y-m-d',
